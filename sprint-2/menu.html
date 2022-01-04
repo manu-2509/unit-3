@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background:black;
+        color:white;
+    }
+    #container{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        grid-gap:15px;
+        text-align:center;
+    }
+    img{
+        width:200px;
+        height:200px;
+    }
+    .div1{
+        border:2px solid black;
+        
+    }
+    #cart{
+        display:flex;
+    }
+    #cart1{
+        display:flex;
+    }
+    .fries{
+        text-align:center;
+        font-size:40px;
+    }
+    #goto{
+        margin-bottom:10px;
+
+    }
+</style>
+<body>
+  <h1 class="fries">Menu</h1>
+  <div id="cart">
+    <h1>Cart Items:</h1>
+    <h1 id="number">0</h1>
+  </div>
+  <button id="goto" onclick="goToCart()">Go to cart</button>
+
+  
+    <div id="container"></div>
+
+ 
+</body>
+</html>
+<script>
+
+    
+
+    let food=[
+    {
+    name:" Chicken Sandwich",
+    price:250,
+    image:"https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-spicy-crispy-chicken-sandwich.jpg?$Category_Desktop$",
+    },
+    {
+    name:"Big Mac®",
+    price:350,
+    image:"https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Big-Mac.jpg?$Category_Desktop$",
+    },
+    {
+    name:"French Fries",
+    price:150,
+    image:"https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-fries-small.jpg?$Category_Desktop$",
+    },
+    {
+    name:"Quarter Pounder",
+    price:450,
+    image:"https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Quarter-Pounder-with-Cheese.jpg?$Category_Desktop$",
+    },
+    {
+    name:"Sausage Burrito",
+    price:200,
+    image:"https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Sausage-Burrito.jpg?$Category_Desktop$",
+    },
+    {
+        name:"Iced Coffee",
+        price:160,
+        image:"https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/regular/desktop/t-mcdonalds-Premium-Roast-Iced-Coffee-Medium.jpg?$Category_Desktop$"
+    }
+
+]
+let cart=[];
+let count=cart.length;
+let food_list=document.getElementById("container");
+
+food.map(function(elem){
+
+    let div1=document.createElement("div");
+    div1.className="div1";
+    let name=document.createElement("h2");
+    name.innerText=elem.name;
+    let image=document.createElement("img");
+    image.src=elem.image;
+    let price=`₹${elem.price}`;
+    let btn=document.createElement("button");
+    btn.innerText="Add To cart";
+    btn.addEventListener("click",function(){
+        addToCart(elem);
+        
+    })
+    let br=document.createElement("br");
+    div1.append(image,name,price,br,btn);
+    food_list.append(div1);
+    localStorage.setItem("foodItems",JSON.stringify(food));
+
+})
+
+function addToCart(elem){
+    cart.push(elem);
+    
+    let items=document.getElementById("number");
+    items.innerText=cart.length;
+    localStorage.setItem("cartItems",JSON.stringify(cart));
+}
+
+function goToCart(){
+    window.location.href="cart.html";
+}
+
+   
+
+    
+</script>

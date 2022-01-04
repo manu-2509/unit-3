@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hi!Enter your Card details</h1>
+    
+    <label>Name:</label>
+    <input type="text" id="text"/><br><br>
+    <label>Card Number:</label>
+    <input type="number" id="card"/><br><br>
+    <label>Cvv:</label>
+    <input type="number" id="cvv"/><br><br>
+    <label>ExpiryDate:</label>
+    <input type="date" id="date">
+    <button onclick="submit()" id="submit">Submit</button>
+    
+</body>
+</html>
+<script>
+
+    let card=document.getElementById("card");
+    let cvv=document.getElementById("cvv");
+
+
+    function submit(){
+        if(card.value=="1234567890"&& cvv.value=="123"){
+            alert("Your Order is accepted");
+            setTimeout(function(){
+                alert("Your Order Is Being cooked")
+            },3000);
+            setTimeout(function(){
+                alert("Your Order is Ready")
+            },5000);
+            setTimeout(function(){
+                alert("Out For Delivery")
+            },10000);
+            setTimeout(function(){
+                alert("Order delivered")
+            },12000);
+            
+            
+            
+        }
+        else{
+            alert("Invalid Credentials");
+        }
+    }
+
+
+</script>
